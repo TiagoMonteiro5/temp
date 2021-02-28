@@ -93,18 +93,18 @@ paths:
         description: Post the necessary fields for the API to create a new user.
       description: Create a new user.
     delete:
-      summary: ''
+      summary: Delete user account
       operationId: delete-user
       responses:
         '200':
           description: OK
       description: Delete an existing user.
     put:
-      summary: ''
+      summary: Update user info
       operationId: put-user
       responses:
         '200':
-          description: OK
+          description: Information updated.
       description: Updates information about an existing user.
       requestBody:
         content:
@@ -116,9 +116,13 @@ paths:
                   type: string
                 lastName:
                   type: string
+                email:
+                  type: string
+                dateOfBirth:
+                  type: string
   /api/reviewcenter/v1/reviews:
     get:
-      summary: Your GET endpoint
+      summary: All reviews
       tags: []
       responses: {}
       operationId: get-v1-reviews
@@ -126,11 +130,36 @@ paths:
     parameters: []
   /api/reviewcenter/v1/reviews/id_1:
     get:
-      summary: Your GET endpoint
+      summary: All reviews for a specific game
       tags: []
       responses: {}
       operationId: get-api-reviewcenter-v1-reviews-id_1
-      description: Shows reviews for game with id_1
+      description: Shows reviews for the game with id 1.
+  /api/reviewcenter/v1/topgames:
+    get:
+      summary: Top games
+      tags: []
+      responses: {}
+      operationId: get-api-reviewcenter-v1-reviews-top
+      description: 'Returns a list of the better-reviewed 100 games, grouped by genre.'
+    parameters: []
+  /api/reviewcenter/v1/recommendation:
+    get:
+      summary: Game recommendations
+      tags: []
+      responses:
+        '200':
+          description: Recommendations are ready.
+      operationId: get-api-reviewcenter-v1-gamerecommendation
+      description: 'Returns a list of possible games for the user to try, based on their favorite games.'
+    parameters: []
+  /api/reviewcenter/v1/hiddengems:
+    get:
+      summary: Hidden gems
+      tags: []
+      responses: {}
+      operationId: get-api-reviewcenter-v1-hiddengems
+      description: Returns a list of games with a low number of highly-positive reviews.
 components:
   schemas:
     User:
