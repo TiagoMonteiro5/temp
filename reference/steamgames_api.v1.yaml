@@ -186,7 +186,7 @@ paths:
           description: Not Found
       operationId: get-reviews-best
       description: Returns the most upvoted game reviews.
-  /games:
+  /games/bestgames:
     get:
       summary: Best games
       tags:
@@ -200,20 +200,7 @@ paths:
           description: Not Found
       operationId: get-games
       description: 'Returns a list of all available games on Steam, ordered by score.'
-  /games/mostplayed:
-    get:
-      summary: Most played games
-      tags:
-        - games
-      responses:
-        '200':
-          description: Games are ready!
-        '400':
-          description: Bad Request
-        '404':
-          description: Not Found
-      operationId: get-games-mostplayed
-      description: Returns the games with the most number of hours played (user average).
+    parameters: []
   /games/recommendation:
     get:
       summary: Game recommendation
@@ -279,6 +266,20 @@ paths:
           description: Not Found
       operationId: get-genres-mostreviewed
       description: Returns all game genre/categories ordered by number of total reviews.
+  /games:
+    get:
+      summary: Games menu
+      tags:
+        - games
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Bad Request
+        '404':
+          description: Not Found
+      operationId: get-games
+      description: 'Choose between games microservices: recommendations, bestgames or hiddengems.'
 components:
   schemas:
     User:
