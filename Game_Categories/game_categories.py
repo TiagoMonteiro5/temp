@@ -3,8 +3,7 @@ from flask_restful import Resource, Api
 
 app = Flask(__name__)
 api = Api(app)
-@app.route("/")
-@app.route("/Categories")
+
 
 class Game_Categories(Resource):
     def get(self):
