@@ -1,0 +1,31 @@
+  swagger: "2.0"
+  info:
+    description: Swagger file with app specifications
+    version: "1.0.0"
+    title: Game Categories
+  consumes:
+    - "application/json"
+  produces:
+    - "application/json"
+  
+  basePath: "/"
+  # Paths supported by the server application
+  paths:
+  /reviews:
+    get:
+      operationId: reviews.games
+      tags:
+        - Reviews
+      summary: The reviews data structure supported by the server application
+      description: Read the list of reviews
+      responses:
+        200:
+          description: Successful read reviews list operation
+          schema:
+            type: array
+            items:
+              properties:
+                game_id:
+                  type: integer
+                game_name:
+                  type: string
