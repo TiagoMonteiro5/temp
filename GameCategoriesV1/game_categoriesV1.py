@@ -20,4 +20,4 @@ def home():
     return "Welcome to the home page"
 
 if __name__ == '__main__':
-    connex_app.run(host = '127.0.0.1', port = 8080, debug=True)
+    connex_app.run(host = '0.0.0.0', port = 8080, debug=True)
