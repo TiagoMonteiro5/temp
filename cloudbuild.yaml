@@ -1,5 +1,17 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/cn2021-steam-reviews/reviews-svc', '.']
+  entrypoint: 'bash'
+  args: [ '-c', 'gcloud secrets versions access latest --secret=my-github-deploy-key > /root/.ssh/id_github' ]
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+    
+- name: 'docker'
+  entrypoint: 'sh'
+  args: [ '-c', 'docker build --build-arg SSH_PRIVATE_KEY="$(cat /root/.ssh/id_github)" -t gcr.io/cn2021-steam-reviews/reviews-svc .' ]
+  volumes:
+  - name: 'ssh'
+    path: /root/.ssh
+    
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/cn2021-steam-reviews/reviews-svc']
