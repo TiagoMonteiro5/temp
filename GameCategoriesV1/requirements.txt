@@ -1,6 +1,0 @@
-flask
-flask_restful
-connexion
-flask_sqlalchemy
-flask_marshmallow
-pymysql
